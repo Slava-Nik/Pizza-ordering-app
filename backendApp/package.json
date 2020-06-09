@@ -1,0 +1,31 @@
+{
+  "name": "nik-pizza-server-app",
+  "version": "1.0.0",
+  "description": "Backend for pizza app",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pizza",
+    "react",
+    "redux",
+    "node.js",
+    "graphql"
+  ],
+  "author": "Slava-Nik",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "nodemon": "^2.0.4"
+  }
+}

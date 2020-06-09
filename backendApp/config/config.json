@@ -1,0 +1,31 @@
+{
+  "development": {
+    "database": {
+      "url": "mongodb://localhost:27017/niks_pizza",
+      "connectOptions": {
+        "auto_reconnect": true,
+        "poolSize": 10,
+        "useNewUrlParser": true,
+        "useUnifiedTopology": true,
+        "useCreateIndex": true
+      }
+    },
+    "corsOptions": {
+      "origin": ["http://localhost:3000"],
+      "credentials": true,
+      "optionsSuccessStatus": 200
+    }
+  },
+  "production": {
+    "database": {
+      "url": "mongodb://localhost:27017/niks_pizza",
+      "connectOptions": {
+        "auto_reconnect": true,
+        "poolSize": 10,
+        "useNewUrlParser": true,
+        "useUnifiedTopology": true,
+        "useCreateIndex": true
+      }
+    }
+  }
+}
