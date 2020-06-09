@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["extends", "ignores"]
+      }
+    ],
+    "indentation": 2,
+    "unit-whitelist": ["em", "rem", "s", "%", "px", "vh", "deg"],
+    "block-closing-brace-newline-after": "always"
+  }
+}
