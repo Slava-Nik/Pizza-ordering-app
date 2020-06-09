@@ -15,6 +15,9 @@ const ProductSchema = Schema({
 	imageSrc: {
 		type: String,
 	},
+	description: {
+		type: String,
+	},
 	popularity: {
 		type: Number,
 		min: 1,
