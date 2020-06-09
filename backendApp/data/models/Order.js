@@ -15,6 +15,13 @@ const OrderSchema = Schema(
 		email: {
 			type: String,
 			required: true,
+			validate: {
+				validator: function (str) {
+					// eslint-disable-next-line no-useless-escape
+					return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(str);
+				},
+				message: "Invalid email address"
+			}
 		},
 		address: {
 			type: String,

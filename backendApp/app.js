@@ -5,14 +5,14 @@ const env = process.env.NODE_ENV || "development";
 const config = require("./config/config.json")[env];
 const port = process.env.PORT || 5000;
 const app = express();
+const indexRouter = require("./routes/index");
 
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors(config.corsOptions));
 
+app.use("/", indexRouter);
 
-// app.use('/', indexRouter);
-// app.use('/api/v1/users', usersRouter);
 
 module.exports = () => {
 	app.listen(port, (err) => {

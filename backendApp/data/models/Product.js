@@ -8,12 +8,17 @@ const ProductSchema = Schema({
 		required: true,
 		unique: true,
 	},
+	basePrice: {
+		type: Number,
+		required: true,
+	},
 	imageSrc: {
 		type: String,
 	},
-	price: {
+	popularity: {
 		type: Number,
-		required: true,
+		min: 1,
+		max: 11,
 	},
 	created: {
 		type: Date,

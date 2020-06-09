@@ -30,8 +30,8 @@ function CartProductsList() {
 
   return (
     <div className="content__items">
-      {order &&
-        order.map((product) => (
+      {order
+        && order.map((product) => (
           <div className="cart__item" key={product.id}>
             <div className="cart__item-info-wrapper">
               <div className="cart__item-img">
