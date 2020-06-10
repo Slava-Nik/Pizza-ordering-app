@@ -4,6 +4,4 @@ const indexController = require("../controllers/index");
 
 router.get("/", indexController.home);
 
-router.get("/fillDatabaseWithDefaultProducts", indexController.fillDatabaseWithDefaultProducts);
-
 module.exports = router;

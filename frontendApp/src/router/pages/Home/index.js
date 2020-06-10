@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import Filters from "@components/Filters";
 import ProductsList from "@components/ProductsList";
 import "./style.scss";
+import { getProducts } from "../../../store/actions/products";
 
+function Home(props) {
+  const { getProductsList } = props;
+  useEffect(() => {
+    getProductsList();
+  }, []);
 
-function Home() {
   return (
     <div className="content">
       <div className="container">
@@ -15,4 +21,6 @@ function Home() {
   );
 }
 
-export default Home;
+const mapDispatchToProps = { getProductsList: getProducts };
+
+export default connect(null, mapDispatchToProps)(Home);

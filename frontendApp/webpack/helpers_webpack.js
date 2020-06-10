@@ -33,15 +33,6 @@ const getPlugins = () => {
       filename: getFilename("css"),
     }),
   ];
-  if (isDev) {
-    plugins.push(
-      new webpack.SourceMapDevToolPlugin({
-        filename: "sourcemaps/[file].map",
-        test: /\.(js|jsx|css)(\?|$)/i,
-        exclude: /chunk-vendors\..+?\.js/i,
-      })
-    );
-  }
   return plugins;
 };
 

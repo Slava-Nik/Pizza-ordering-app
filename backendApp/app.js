@@ -6,8 +6,7 @@ const config = require("./config/config.json")[env];
 const port = process.env.PORT || 5000;
 const app = express();
 const indexRouter = require("./routes/index");
-const graphqlHTTP = require("express-graphql");
-const schema = require("./graphql/schema");
+const productRouter = require("./routes/product");
 
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -15,10 +14,7 @@ app.use(cors(config.corsOptions));
 
 
 app.use("/", indexRouter);
-app.use("/graphql", graphqlHTTP({
-	schema,
-	graphiql: env === "development"
-}));
+app.use("/api/v1/products", productRouter)
 
 
 module.exports = () => {
