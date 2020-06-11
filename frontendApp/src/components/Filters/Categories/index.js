@@ -19,7 +19,9 @@ function Categories(props) {
     const { categoryValue } = target.dataset;
     if (categoryValue) {
       const isAllClick = categoryValue === "All";
-      const isElemExistInCategories = selectedCategories.includes(categoryValue);
+      const isElemExistInCategories = selectedCategories.includes(
+        categoryValue,
+      );
       const isCategoriesContainElems = Boolean(selectedCategories.length);
 
       if (!isCategoriesContainElems && isAllClick) {
@@ -32,9 +34,14 @@ function Categories(props) {
 
       let updatedCategories = [...selectedCategories];
       if (isElemExistInCategories) {
-        updatedCategories = updatedCategories.filter((category) => category !== categoryValue);
+        updatedCategories = updatedCategories.filter(
+          (category) => category !== categoryValue,
+        );
       } else {
         updatedCategories.push(categoryValue);
+      }
+      if (updatedCategories.length === categories.length) {
+        updatedCategories = [];
       }
       changeCategories(updatedCategories);
     }
@@ -42,21 +49,28 @@ function Categories(props) {
 
   return (
     <div className="categories">
-      <ul className="categories__list" role="presentation" onClick={handleCategoriesClick}>
-        <li data-category-value="All" className={!selectedCategories.length ? "active" : null}>All</li>
-        {
-            categories.map(
-              (category) => (
-                <li
-                  key={category.id}
-                  data-category-value={category.name}
-                  className={selectedCategories.includes(category.name) ? "active" : null}
-                >
-                  {category.name}
-                </li>
-              ),
-            )
-          }
+      <ul
+        className="categories__list"
+        role="presentation"
+        onClick={handleCategoriesClick}
+      >
+        <li
+          data-category-value="All"
+          className={!selectedCategories.length ? "active" : null}
+        >
+          All
+        </li>
+        {categories.map((category) => (
+          <li
+            key={category.id}
+            data-category-value={category.name}
+            className={
+              selectedCategories.includes(category.name) ? "active" : null
+            }
+          >
+            {category.name}
+          </li>
+        ))}
       </ul>
     </div>
   );

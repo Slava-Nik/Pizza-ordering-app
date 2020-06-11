@@ -5,6 +5,12 @@ import "../style.scss";
 import { changeProductsSort } from "../../../store/actions/filters";
 
 
+const sortBy = [
+  { id: 1, name: "Popularity" },
+  { id: 2, name: "Price" },
+  { id: 3, name: "Alphabet" },
+];
+
 function Sort(props) {
   const { selectedSort, changeSort } = props;
 
@@ -24,22 +30,27 @@ function Sort(props) {
   const togglePopupVisibiblity = () => {
     setSortPopupVisibility((prevVisibility) => !prevVisibility);
   };
-  const handleSortByClick = () => {
-
+  const handleSortByClick = (e) => {
+    const { target } = e;
+    const { sortValue } = target.dataset;
+    if (sortValue) {
+      const updatedSort = { ...selectedSort };
+      updatedSort.by = sortValue;
+      changeSort(updatedSort);
+    }
   };
   const handleToggleOrderClick = () => {
     const updatedSort = { ...selectedSort };
-    updatedSort.order = updatedSort.order === "desc" ? "asc" : "desc";
+    updatedSort.order = updatedSort.order === "Desc" ? "Asc" : "Desc";
     changeSort(updatedSort);
   };
-
 
   return (
     <div className="sort">
       <div className="sort__label">
         <button
           type="button"
-          className={`sort__toggle-order ${selectedSort.order}`}
+          className={`sort__toggle-order ${selectedSort.order.toLowerCase()}`}
           onClick={handleToggleOrderClick}
         >
           <ArrowTopIcon />
@@ -49,9 +60,16 @@ function Sort(props) {
       </div>
       <div className={`${!isSortPopupVisible ? "hidden" : null} sort__popup`}>
         <ul role="presentation" onClick={handleSortByClick}>
-          <li className="active">popularity</li>
-          <li>price</li>
-          <li>alphabet</li>
+          {sortBy.map((sortValue) => (
+            <li
+              key={sortValue.id}
+              data-sort-value={sortValue.name}
+              className={selectedSort.by === sortValue.name ? "active" : null}
+            >
+              {sortValue.name}
+            </li>
+          ))}
+
         </ul>
       </div>
     </div>

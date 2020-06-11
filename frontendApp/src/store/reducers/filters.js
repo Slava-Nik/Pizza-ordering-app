@@ -2,7 +2,7 @@ import { CHANGE_PRODUCTS_CATEGORIES, CHANGE_PRODUCTS_SORT } from "../constants/A
 
 const INITIAL_STATE = {
   categories: [],
-  sort: { by: "popularity", order: "desc" },
+  sort: { by: "Popularity", order: "Desc" },
 };
 
 export default (state = INITIAL_STATE, action) => {

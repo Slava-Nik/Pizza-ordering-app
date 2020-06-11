@@ -5,6 +5,6 @@ const productController = require("../controllers/product");
 router.get("/", productController.getAllProducts);
 router.get("/:id", productController.getProductById);
 
-router.get("/fillDatabaseWithDefaultProducts", productController.fillDatabaseWithDefaultProducts);
+router.post("/fillDatabaseWithDefaultProducts", productController.fillDatabaseWithDefaultProducts);
 
 module.exports = router;

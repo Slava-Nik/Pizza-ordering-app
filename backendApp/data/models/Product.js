@@ -23,6 +23,7 @@ const ProductSchema = Schema({
 		min: 1,
 		max: 11,
 	},
+	categories: [String],
 	created: {
 		type: Date,
 		default: Date.now
