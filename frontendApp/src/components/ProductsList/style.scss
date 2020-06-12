@@ -51,6 +51,12 @@
     }
   }
 
+  &__dough-list,
+  &__size-list{
+    user-select: none;
+  }
+  
+
   &__bottom {
     display: flex;
     align-items: center;

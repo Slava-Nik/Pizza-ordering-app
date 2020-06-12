@@ -1,9 +1,9 @@
 import React from "react";
 import PizzaLogo from "@assets/images/pizza-logo";
-import CartIcon from "@assets/images/cart-icon";
 import {
   Link,
 } from "react-router-dom";
+import CartButton from "./CartButton";
 import "./style.scss";
 
 
@@ -18,17 +18,11 @@ function Header() {
             <p>We do pizza right</p>
           </div>
         </Link>
-        <div className="header__cart">
-          <Link to="/cart" className="button button--cart">
-            <CartIcon />
-            <span>3</span>
-            <div className="button__delimiter" />
-            <span>52 $</span>
-          </Link>
-        </div>
+        <CartButton />
       </div>
     </div>
   );
 }
+
 
 export default Header;
