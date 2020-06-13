@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import getArraysIntersection from "lodash.intersection";
 import LoaderIcon from "@assets/images/loader-icon";
@@ -10,7 +11,6 @@ function ProductsList(props) {
     products: productsObj,
     categories,
     sort,
-    cart,
   } = props;
 
   const getFilteredProductsByCategories = (products) => {
@@ -65,7 +65,7 @@ function ProductsList(props) {
         <div className="content__items">
           {productsToDisplay
             && productsToDisplay.map((product) => (
-              <ProductItem cart={cart} key={product.id} product={product} />
+              <ProductItem key={product.id} product={product} />
             ))}
         </div>
       )}
@@ -73,12 +73,20 @@ function ProductsList(props) {
   );
 }
 
+ProductsList.propTypes = {
+  products: PropTypes.object.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sort: PropTypes.shape({
+    by: PropTypes.string,
+    order: PropTypes.oneOf(["Desc", "Asc"]),
+  }).isRequired,
+};
+
+
 const mapStateToProps = (state) => ({
   products: state.products,
   categories: state.filters.categories,
   sort: state.filters.sort,
-  cart: state.cart,
 });
-
 
 export default connect(mapStateToProps)(ProductsList);

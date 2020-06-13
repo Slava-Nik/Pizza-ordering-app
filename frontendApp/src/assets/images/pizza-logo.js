@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 
 function PizzaLogo({ className }) {
   return (
@@ -329,5 +329,12 @@ function PizzaLogo({ className }) {
   );
 }
 
+PizzaLogo.propTypes = {
+  className: PropTypes.string,
+};
+
+PizzaLogo.defaultProps = {
+  className: "",
+};
 
 export default PizzaLogo;

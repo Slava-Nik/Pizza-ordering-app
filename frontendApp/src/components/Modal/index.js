@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
 import "./style.scss";
 
@@ -36,6 +37,20 @@ function Modal(props) {
     </div>
   );
 }
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  animationType: PropTypes.oneOf(["zoom", "opacity"]),
+  animationTimeout: PropTypes.number,
+  className: PropTypes.string,
+};
+
+Modal.defaultProps = {
+  animationType: "opacity",
+  animationTimeout: 200,
+  className: "",
+};
 
 
 export default Modal;

@@ -6,7 +6,6 @@ import {
 import CartButton from "./CartButton";
 import "./style.scss";
 
-
 function Header() {
   return (
     <div className="header">
@@ -23,6 +22,5 @@ function Header() {
     </div>
   );
 }
-
 
 export default Header;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   Link,
@@ -149,6 +150,13 @@ function Cart(props) {
     </div>
   );
 }
+
+Cart.propTypes = {
+  totalCartProducts: PropTypes.number.isRequired,
+  totalCartPrice: PropTypes.number.isRequired,
+  clearProductCart: PropTypes.func.isRequired,
+};
+
 
 const mapStateToProps = (state) => ({
   totalCartPrice: totalCartPriceSelector(state),

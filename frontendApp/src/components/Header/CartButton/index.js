@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   Link,
@@ -24,6 +25,11 @@ function CartButton(props) {
     </div>
   );
 }
+
+CartButton.propTypes = {
+  totalCartPrice: PropTypes.number.isRequired,
+  totalCartProducts: PropTypes.number.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   totalCartPrice: totalCartPriceSelector(state),

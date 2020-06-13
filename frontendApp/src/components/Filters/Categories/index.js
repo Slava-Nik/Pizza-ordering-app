@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import "../style.scss";
 import { changeProductsCategories } from "../../../store/actions/filters";
+import "../style.scss";
 
 const categories = [
   { id: 1, name: "Hot" },
@@ -75,6 +76,12 @@ function Categories(props) {
     </div>
   );
 }
+
+Categories.propTypes = {
+  selectedCategories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  changeCategories: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   selectedCategories: state.filters.categories,
 });

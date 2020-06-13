@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MinusCountIcon from "@assets/images/minus-count";
 import PlusCountIcon from "@assets/images/plus-count";
@@ -9,6 +10,7 @@ import {
   incrementPositionInCart,
 } from "../../../../store/actions/cart";
 import { cartProductsDataSelector } from "../../../../store/selectors/cart";
+import config from "../../../../config";
 import "./style.scss";
 
 function CartProductsList(props) {
@@ -41,7 +43,7 @@ function CartProductsList(props) {
               <div className="cart__item-img">
                 <img
                   className="pizza-block__image"
-                  src={product.imageSrc}
+                  src={`${config.backend}${product.imageSrc}`}
                   alt={product.title}
                 />
               </div>
@@ -94,6 +96,28 @@ function CartProductsList(props) {
     </div>
   );
 }
+
+const cartProductPropTypesShape = PropTypes.shape({
+  id: PropTypes.string,
+  title: PropTypes.string,
+  imageSrc: PropTypes.string,
+  size: PropTypes.string,
+  doughType: PropTypes.string,
+  price: PropTypes.number,
+  quantity: PropTypes.number,
+});
+
+CartProductsList.propTypes = {
+  cartProductsData: PropTypes.arrayOf(cartProductPropTypesShape),
+  removeFromCart: PropTypes.func.isRequired,
+  decrementInCart: PropTypes.func.isRequired,
+  incrementInCart: PropTypes.func.isRequired,
+};
+
+CartProductsList.defaultProps = {
+  cartProductsData: [],
+};
+
 
 const mapStateToProps = (state) => ({
   cartProductsData: cartProductsDataSelector(state),

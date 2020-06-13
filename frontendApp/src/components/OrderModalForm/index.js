@@ -1,8 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import CloseCrossIcon from "@assets/images/close-cross";
 import "./style.scss";
-
 
 function OrderModalForm(props) {
   const { setVisibility, handlePlaceOrder } = props;
@@ -114,6 +114,11 @@ function OrderModalForm(props) {
     </form>
   );
 }
+
+OrderModalForm.propTypes = {
+  setVisibility: PropTypes.func.isRequired,
+  handlePlaceOrder: PropTypes.func.isRequired,
+};
 
 
 export default OrderModalForm;

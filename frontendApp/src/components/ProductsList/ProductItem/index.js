@@ -1,8 +1,10 @@
 import React, { useState, useMemo } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import AddButtonPlusIcon from "@assets/images/add-button-plus";
 import { addProductToCart } from "../../../store/actions/cart";
 import { totalCartProductsByIdSelector } from "../../../store/selectors/cart";
+import config from "../../../config";
 import "../style.scss";
 
 
@@ -28,7 +30,6 @@ function ProductsList(props) {
     totalCartProductsById,
   } = props;
 
-
   const [doughType, setDoughType] = useState(doughTypes[0].name);
   const [pizzaSize, setPizzaSize] = useState(pizzaSizes[0].name);
 
@@ -52,7 +53,7 @@ function ProductsList(props) {
     <div className="pizza-block" key={product.id}>
       <img
         className="pizza-block__image"
-        src={product.imageSrc}
+        src={`${config.backend}${product.imageSrc}`}
         alt={product.title}
       />
       <h4 className="pizza-block__title">{product.title}</h4>
@@ -106,6 +107,23 @@ function ProductsList(props) {
     </div>
   );
 }
+
+const cartProductPropTypesShape = PropTypes.shape({
+  id: PropTypes.string,
+  title: PropTypes.string,
+  imageSrc: PropTypes.string,
+  size: PropTypes.string,
+  doughType: PropTypes.string,
+  basePrice: PropTypes.number,
+  quantity: PropTypes.number,
+});
+
+ProductsList.propTypes = {
+  product: cartProductPropTypesShape.isRequired,
+  addItemToCart: PropTypes.func.isRequired,
+  totalCartProductsById: PropTypes.number.isRequired,
+};
+
 
 const mapStateToProps = (state, ownProps) => ({
   totalCartProductsById: totalCartProductsByIdSelector(ownProps.product.id)(state),

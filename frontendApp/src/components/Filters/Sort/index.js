@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ArrowTopIcon from "@assets/images/arrow-top";
-import "../style.scss";
 import { changeProductsSort } from "../../../store/actions/filters";
-
+import "../style.scss";
 
 const sortBy = [
   { id: 1, name: "Popularity" },
@@ -13,7 +13,6 @@ const sortBy = [
 
 function Sort(props) {
   const { selectedSort, changeSort } = props;
-
   const [isSortPopupVisible, setSortPopupVisibility] = useState(false);
 
   useEffect(() => {
@@ -75,6 +74,15 @@ function Sort(props) {
     </div>
   );
 }
+
+Sort.propTypes = {
+  selectedSort: PropTypes.shape({
+    by: PropTypes.string,
+    order: PropTypes.oneOf(["Desc", "Asc"]),
+  }).isRequired,
+  changeSort: PropTypes.func.isRequired,
+};
+
 
 const mapStateToProps = (state) => ({
   selectedSort: state.filters.sort,

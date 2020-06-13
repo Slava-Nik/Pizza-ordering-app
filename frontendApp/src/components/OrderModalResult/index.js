@@ -1,14 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   useHistory,
 } from "react-router-dom";
 import ConfirmOrderIcon from "@assets/images/confirm-order-icon.svg";
 import { clearCart } from "../../store/actions/cart";
-
 import "./style.scss";
 
-function OrderModalForm(props) {
+
+function OrderModalResult(props) {
   const { clearProductCart } = props;
   const history = useHistory();
 
@@ -29,7 +30,6 @@ function OrderModalForm(props) {
             onClick={redirectToHomeAndClearCart}
           >
             OK
-
           </button>
         </div>
       </div>
@@ -38,9 +38,12 @@ function OrderModalForm(props) {
   );
 }
 
+OrderModalResult.propTypes = {
+  clearProductCart: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = {
   clearProductCart: clearCart,
 };
 
-
-export default connect(null, mapDispatchToProps)(OrderModalForm);
+export default connect(null, mapDispatchToProps)(OrderModalResult);

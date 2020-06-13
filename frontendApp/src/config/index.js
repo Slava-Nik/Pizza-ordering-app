@@ -9,7 +9,6 @@ const config = {
         "Access-Control-Allow-Origin": "*",
       },
     },
-
   },
   production: {
     backend: "",
