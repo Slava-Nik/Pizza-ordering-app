@@ -16,7 +16,6 @@ import "./common/styles/app.scss";
 
 function App() {
   const { store, persistor } = configureStore();
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

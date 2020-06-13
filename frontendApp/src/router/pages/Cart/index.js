@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -13,14 +13,26 @@ import OrderModalForm from "@components/OrderModalForm";
 import OrderModalResult from "@components/OrderModalResult";
 import CartProductsList from "./CartProductsList";
 import { clearCart } from "../../../store/actions/cart";
+import { getCurrencyRates } from "../../../store/actions/currency";
 import { totalCartPriceSelector, totalCartProductsSelector } from "../../../store/selectors/cart";
+import { getEURSelector } from "../../../store/selectors/currency";
 import "./style.scss";
 
 
 function Cart(props) {
-  const { totalCartProducts, totalCartPrice, clearProductCart } = props;
+  const {
+    totalCartProducts,
+    totalCartPrice,
+    clearProductCart,
+    getCurrency,
+    usdEurRate,
+  } = props;
   const [isOrderFormVisible, setOrderFormVisibility] = useState(false);
   const [isOrderResultVisible, setOrderResultVisibility] = useState(false);
+
+  useEffect(() => {
+    getCurrency();
+  }, []);
 
   const handleClearCartClick = () => {
     clearProductCart();
@@ -37,6 +49,11 @@ function Cart(props) {
 
   const deliveryPrice = totalCartProducts >= 3 ? 0 : 5;
   const totalOrderSum = totalCartPrice + deliveryPrice;
+
+  const totalPriceInEuro = useMemo(() => {
+    if (usdEurRate) return Math.round((totalOrderSum / usdEurRate) * 100) / 100;
+    return null;
+  }, [usdEurRate, totalOrderSum]);
 
   return (
     <div className="content">
@@ -86,7 +103,22 @@ function Cart(props) {
                     {" "}
                     Order sum:
                     {" "}
-                    <b>{`${totalOrderSum} $`}</b>
+                    <b>
+                      {`${totalOrderSum} $`}
+                    </b>
+                    { totalPriceInEuro && (
+                    <>
+                      <br />
+                      <span className="euro-currency">
+
+                        {" "}
+                        <span className="euro-currency__approx">~</span>
+                        {totalPriceInEuro}
+                        {" "}
+                        €
+                      </span>
+                    </>
+                    )}
                   </span>
                 </div>
                 <div className="cart__bottom-buttons">
@@ -155,15 +187,23 @@ Cart.propTypes = {
   totalCartProducts: PropTypes.number.isRequired,
   totalCartPrice: PropTypes.number.isRequired,
   clearProductCart: PropTypes.func.isRequired,
+  getCurrency: PropTypes.func.isRequired,
+  usdEurRate: PropTypes.number,
+};
+
+Cart.defaultProps = {
+  usdEurRate: null,
 };
 
 
 const mapStateToProps = (state) => ({
   totalCartPrice: totalCartPriceSelector(state),
   totalCartProducts: totalCartProductsSelector(state),
+  usdEurRate: getEURSelector(state),
 });
 const mapDispatchToProps = {
   clearProductCart: clearCart,
+  getCurrency: getCurrencyRates,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

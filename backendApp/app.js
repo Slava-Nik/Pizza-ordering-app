@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 const indexRouter = require("./routes/index");
 const productRouter = require("./routes/product");
-
+const currencyRouter = require("./routes/currency");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors(config.corsOptions));
@@ -15,6 +15,7 @@ app.use(cors(config.corsOptions));
 
 app.use("/", indexRouter);
 app.use("/api/v1/products", productRouter)
+app.use("/api/v1/currency", currencyRouter)
 
 
 module.exports = () => {
