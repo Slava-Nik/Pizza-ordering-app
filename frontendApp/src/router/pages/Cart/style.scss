@@ -132,8 +132,10 @@
   }
 
   &--empty {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    width: 560px;
+    margin-top: 30px;
     text-align: center;
 
     h2 {
@@ -155,8 +157,7 @@
 
     img {
       display: block;
-      width: 300px;
-      margin: 45px auto 60px;
+      margin: 65px 0;
     }
 
     .button--black {
@@ -237,6 +238,15 @@
       margin-bottom: 12px;
     }
   }
+  .cart--empty{
+    margin-top: 15px;
+    h2{
+      font-size: 24px;
+    }
+    p{
+      font-size: 15.5px;
+    }
+  }
 }
 
 @media(max-width: 450px){
@@ -265,3 +275,4 @@
     margin-bottom: 15px;
   }
 }
+

@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 
+const getProductsSelector = (state) => state.products.data;
 const getCartSelector = (state) => state.cart;
 
 export const totalCartPriceSelector = createSelector(
@@ -26,4 +27,21 @@ export const totalCartProductsByIdSelector = (productId) => createSelector(
     },
     0,
   ),
+);
+
+export const cartProductsDataSelector = createSelector(
+  [getProductsSelector, getCartSelector],
+  (products, cart) => {
+    const resultCartProducts = [];
+    cart.forEach((cartPosition) => {
+      const cartItem = { ...cartPosition };
+      const productObj = products.find((product) => product.id === cartItem.id);
+      if (productObj) {
+        cartItem.title = productObj.title;
+        cartItem.imageSrc = productObj.imageSrc;
+        resultCartProducts.push(cartItem);
+      }
+    });
+    return resultCartProducts;
+  },
 );

@@ -1,33 +1,21 @@
 @import '@/common/styles/variables.scss';
 
-.overlay-wrapper{
-  box-sizing: content-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow-y: auto;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2000;
-}
-
 .order-form{
-  box-sizing: border-box;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
   display: flex;
   width: 80%;
   max-width: 550px;
   min-height: 520px;
   padding: 30px 35px;
-
   background-color: $white;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 60px;
   z-index: 1000;
+
 
   &__close {
     position: absolute;
@@ -95,6 +83,23 @@
         border: 1px solid rgba(115, 121, 140, 0.72);
       }
     }
+    
+
+    label.invalid {
+      position: relative;
+      input, textarea {
+        border:  1px solid rgb(220, 30, 30);
+      }
+      & .validation-error{
+        position: absolute;
+        top: -12.5px;
+        left: -7px;
+        font-size: 12px;
+        color:  #dc1e1e;    
+      }
+    }
+   
+
   }
 
 
@@ -110,7 +115,7 @@
   &__address{
     flex-direction: column;
     label:not(:last-of-type){
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     textarea{
       width: 100%;
@@ -171,6 +176,5 @@
   }
 
 }
-
 
   

@@ -1,0 +1,52 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.modal__overlay{
+  box-sizing: content-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.zoom-enter {
+  opacity: 0;
+  transition: all 0.2s ease-in-out; 
+  transform: scale(0.8); 
+}
+.zoom-enter-active {
+  opacity: 1;
+  transform: scale(1); 
+}
+.zoom-exit {
+  opacity: 1;
+}
+.zoom-exit-active {
+  transform: scale(0.8); 
+  opacity: 0;
+}
+
+
+.opacity-enter {
+  opacity: 0;
+  transition: all 0.2s ease-in-out; 
+}
+.opacity-enter-active {
+  opacity: 1;
+}
+.opacity-exit {
+  opacity: 1;
+}
+.opacity-exit-active {
+  opacity: 0;
+}
+

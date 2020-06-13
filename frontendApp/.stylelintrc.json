@@ -10,7 +10,7 @@
       }
     ],
     "indentation": 2,
-    "unit-whitelist": ["em", "rem", "s", "%", "px", "vh", "deg"],
+    "unit-whitelist": ["em", "rem", "s", "ms", "%", "px", "vh", "deg"],
     "block-closing-brace-newline-after": "always"
   }
 }
