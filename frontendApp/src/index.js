@@ -1,11 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "@components/Header";
 import { PersistGate } from "redux-persist/integration/react";
 import Home from "./router/pages/Home";
