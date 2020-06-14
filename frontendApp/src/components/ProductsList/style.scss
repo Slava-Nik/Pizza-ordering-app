@@ -13,6 +13,14 @@
     width: 260px;
   }
 
+  &__image--home{
+    transition: transform 150ms ease-out; 
+    cursor: pointer;
+    &:hover{
+      transform: translateY(3px);
+    }
+  }
+
   &__title {
     font-size: 20px;
     font-weight: 900;

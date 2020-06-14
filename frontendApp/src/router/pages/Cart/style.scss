@@ -290,5 +290,16 @@
     margin-right: 0;
     margin-bottom: 15px;
   }
+
+  .cart-delivery{
+    &__info{
+      h3{
+        font-size: 19px;  
+      }
+      p{
+        font-size: 15px;
+      }
+    }
+  }
 }
 

@@ -2,6 +2,8 @@ import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import AddButtonPlusIcon from "@assets/images/add-button-plus";
+import Modal from "@components/Modal";
+import ProductDescriptionModal from "@components/ProductDescriptionModal";
 import { addProductToCart } from "../../../store/actions/cart";
 import { totalCartProductsByIdSelector } from "../../../store/selectors/cart";
 import config from "../../../config";
@@ -30,6 +32,7 @@ function ProductsList(props) {
     totalCartProductsById,
   } = props;
 
+  const [isProductDescriptionVisible, setProductDescriptionVisibility] = useState(false);
   const [doughType, setDoughType] = useState(doughTypes[0].name);
   const [pizzaSize, setPizzaSize] = useState(pizzaSizes[0].name);
 
@@ -51,15 +54,17 @@ function ProductsList(props) {
 
   return (
     <div className="pizza-block" key={product.id}>
-      <img
-        className="pizza-block__image"
-        src={`${config.backend}${product.imageSrc}`}
-        alt={product.title}
-      />
-      <h4 className="pizza-block__title">{product.title}</h4>
-      <div className="pizza-block__selector">
-        <ul className="pizza-block__dough-list">
-          {
+      <div className="pizza-block__content">
+        <img
+          className="pizza-block__image pizza-block__image--home"
+          src={`${config.backend}${product.imageSrc}`}
+          alt={product.title}
+          onClick={() => { setProductDescriptionVisibility(true); }}
+        />
+        <h4 className="pizza-block__title">{product.title}</h4>
+        <div className="pizza-block__selector">
+          <ul className="pizza-block__dough-list">
+            {
             doughTypes.map((dough) => (
               <li
                 key={dough.id}
@@ -70,9 +75,9 @@ function ProductsList(props) {
               </li>
             ))
           }
-        </ul>
-        <ul className="pizza-block__size-list">
-          {
+          </ul>
+          <ul className="pizza-block__size-list">
+            {
             pizzaSizes.map((size) => (
               <li
                 key={size.id}
@@ -83,27 +88,43 @@ function ProductsList(props) {
               </li>
             ))
           }
-        </ul>
-      </div>
-      <div className="pizza-block__bottom">
-        <div className="pizza-block__price">
-          Price:
-          {" "}
-          {productPrice}
-          {" "}
-          $
+          </ul>
         </div>
-        <div
-          className="button button--outline button--add"
-          role="button"
-          onClick={addProductToCartHandleClick}
-          tabIndex="-1"
-        >
-          <AddButtonPlusIcon />
-          <span>Add</span>
-          <i>{totalCartProductsById}</i>
+        <div className="pizza-block__bottom">
+          <div className="pizza-block__price">
+            Price:
+            {" "}
+            {productPrice}
+            {" "}
+            $
+          </div>
+          <div
+            className="button button--outline button--add"
+            role="button"
+            onClick={addProductToCartHandleClick}
+            tabIndex="-1"
+          >
+            <AddButtonPlusIcon />
+            <span>Add</span>
+            <i>{totalCartProductsById}</i>
+          </div>
         </div>
       </div>
+      <Modal
+        isVisible={isProductDescriptionVisible}
+        animationType="opacity"
+        animationTimeout={300}
+        className="pizza-block__description-modal"
+      >
+        <ProductDescriptionModal
+          hideModal={() => { setProductDescriptionVisibility(false); }}
+          product={{
+            image: `${config.backend}${product.imageSrc}`,
+            title: product.title,
+            description: product.description,
+          }}
+        />
+      </Modal>
     </div>
   );
 }

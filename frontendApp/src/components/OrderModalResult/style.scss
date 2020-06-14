@@ -1,17 +1,5 @@
 @import '@/common/styles/variables.scss';
 
-.overlay-wrapper{
-  box-sizing: content-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow-y: auto;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2000;
-}
-
 .order-result{
   box-sizing: border-box;
   position: fixed;

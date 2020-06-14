@@ -29,7 +29,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/pepperoni-hot-pepper.jpg",
 			basePrice: 11,
 			popularity: 8,
-			description: "Pepperoni Hot Pepper description",
+			description: "Hot and spicy pepperoni, extra mozzarella, padrón pepper, tomato sauce",
 			categories: ["Hot"]
 		},
 		{
@@ -37,7 +37,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/cheese.jpg",
 			basePrice: 10,
 			popularity: 5,
-			description: "Cheese description",
+			description: "Classic cheese pizza. Increased portion of mozzarella, tomato sauce",
 			categories: ["Cheese"]
 		},
 		{
@@ -45,7 +45,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/super-meat.jpg",
 			basePrice: 15,
 			popularity: 10,
-			description: "Super meat description",
+			description: "Chicken, beef meatballs, spicy pepperoni, tomato sauce, spicy chorizo, mozzarella, bacon",
 			categories: ["Meat"]
 		},
 		{
@@ -53,7 +53,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/margherita.jpg",
 			basePrice: 8,
 			popularity: 1,
-			description: "Margherita description",
+			description: "Increased portion of mozzarella, tomatoes, Italian herbs, tomatoes, tomato sauce",
 			categories: ["Tomato", "Vegetarian"]
 		},
 		{
@@ -61,7 +61,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/mexican.jpg",
 			basePrice: 10,
 			popularity: 4,
-			description: "Mexican description",
+			description: "Chicken, tomato sauce, sweet pepper, red onion, mozzarella, hot jalapeno,  spicy chorizo, salsa sauce",
 			categories: ["Hot", "Meat"]
 		},
 		{
@@ -69,7 +69,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/spanish-chorizo-sausages.jpg",
 			basePrice: 11,
 			popularity: 6,
-			description: "Spanish chorizo sausages description",
+			description: "Spicy chorizo, mozzarella, red onion, tomato sauce, chipotle sauce",
 			categories: ["Hot", "Meat"]
 		},
 		{
@@ -77,7 +77,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/four-cheeses.jpg",
 			basePrice: 12,
 			popularity: 9,
-			description: "Four cheeses description",
+			description: "Increased portion of mozzarella, cheddar and Parmesan cheese mix, blue cheese, cream sauce",
 			categories: ["Cheese"]
 		},
 		{
@@ -85,7 +85,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/vegetable-pizza.jpg",
 			basePrice: 8,
 			popularity: 2,
-			description: "Vegetable pizza description",
+			description: "Italian herbs, tomato sauce, cheese cubes, mushrooms, sweet peppers, red onions, mozzarella, olives",
 			categories: ["Vegetarian"]
 		},
 		{
@@ -93,7 +93,7 @@ exports.fillDatabaseWithDefaultProducts =  async (req,res) => {
 			imageSrc: "/images/products/ham-and-mushrooms.jpg",
 			basePrice: 10,
 			popularity: 8,
-			description: "Ham and mushrooms description",
+			description: "Ham, mushrooms, extra mozzarella, tomato sauce",
 			categories: ["Meat"]
 		},
 	];

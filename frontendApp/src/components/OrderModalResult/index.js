@@ -18,22 +18,19 @@ function OrderModalResult(props) {
     clearProductCart();
   };
   return (
-    <div className="overlay-wrapper">
-      <div className="order-result">
-        <img className="order-result__icon--success" src={ConfirmOrderIcon} alt="Order confirmed" />
-        <div className="order-result__inner">
-          <h3 className="order-result__title">Awesome!</h3>
-          <p className="order-result__message">Your order has been confirmed. Check your email for details.</p>
-          <button
-            className="button order-result__close"
-            type="button"
-            onClick={redirectToHomeAndClearCart}
-          >
-            OK
-          </button>
-        </div>
+    <div className="order-result">
+      <img className="order-result__icon--success" src={ConfirmOrderIcon} alt="Order confirmed" />
+      <div className="order-result__inner">
+        <h3 className="order-result__title">Awesome!</h3>
+        <p className="order-result__message">Your order has been confirmed. Check your email for details.</p>
+        <button
+          className="button order-result__close"
+          type="button"
+          onClick={redirectToHomeAndClearCart}
+        >
+          OK
+        </button>
       </div>
-
     </div>
   );
 }
