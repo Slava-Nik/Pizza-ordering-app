@@ -43,7 +43,7 @@ function CartProductsList(props) {
               <div className="cart__item-img">
                 <img
                   className="pizza-block__image"
-                  src={`${config.backend}${product.imageSrc}`}
+                  src={`${product.imageSrc}`}
                   alt={product.title}
                 />
               </div>

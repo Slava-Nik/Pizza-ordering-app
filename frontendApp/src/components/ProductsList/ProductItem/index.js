@@ -119,7 +119,7 @@ function ProductsList(props) {
         <ProductDescriptionModal
           hideModal={() => { setProductDescriptionVisibility(false); }}
           product={{
-            image: `${config.backend}${product.imageSrc}`,
+            image: `${product.imageSrc}`,
             title: product.title,
             description: product.description,
           }}
