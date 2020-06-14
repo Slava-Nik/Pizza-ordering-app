@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  useHistory,
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import ConfirmOrderIcon from "@assets/images/confirm-order-icon.svg";
 import { clearCart } from "../../store/actions/cart";
 import "./style.scss";

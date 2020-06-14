@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Filters from "@components/Filters";
 import ProductsList from "@components/ProductsList";
 import { getProducts } from "../../../store/actions/products";
-import "./style.scss";
+
 
 function Home(props) {
   const { getProductsList } = props;

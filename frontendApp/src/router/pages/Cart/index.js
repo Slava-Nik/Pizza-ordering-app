@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  Link,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartIcon from "@assets/images/cart-icon";
 import ClearCartIcon from "@assets/images/clear-cart-icon";
 import DeliveryIcon from "@assets/images/delivery-icon.svg";
@@ -42,7 +40,7 @@ function Cart(props) {
   };
 
   const handlePlaceOrder = (formData) => {
-    // request to the server with formData here
+    // TODO: request to the server with order formData here
     console.log(formData);
     setOrderResultVisibility(true);
   };
@@ -164,6 +162,7 @@ function Cart(props) {
         animationType="opacity"
         animationTimeout={300}
         className="order-form-modal"
+        hideOnEscape={() => { handleOrderFormVisibility(false); }}
       >
         <OrderModalForm
           setVisibility={handleOrderFormVisibility}

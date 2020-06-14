@@ -8,7 +8,7 @@ import "./style.scss";
 
 function ProductsList(props) {
   const {
-    products: productsObj,
+    productsObj,
     categories,
     sort,
   } = props;
@@ -53,7 +53,6 @@ function ProductsList(props) {
   };
   const productsToDisplay = getSortedProducts(getFilteredProductsByCategories(productsObj.data));
 
-
   return (
     <>
       <h2 className="content__title">All pizzas</h2>
@@ -73,8 +72,23 @@ function ProductsList(props) {
   );
 }
 
+const productPropTypesShape = PropTypes.shape({
+  id: PropTypes.string,
+  title: PropTypes.string,
+  imageSrc: PropTypes.string,
+  size: PropTypes.string,
+  doughType: PropTypes.string,
+  price: PropTypes.number,
+  quantity: PropTypes.number,
+});
+
+
 ProductsList.propTypes = {
-  products: PropTypes.object.isRequired,
+  productsObj: PropTypes.shape({
+    data: PropTypes.arrayOf(productPropTypesShape),
+    isLoading: PropTypes.bool,
+    error: PropTypes.any,
+  }).isRequired,
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
   sort: PropTypes.shape({
     by: PropTypes.string,
@@ -84,7 +98,7 @@ ProductsList.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  products: state.products,
+  productsObj: state.products,
   categories: state.filters.categories,
   sort: state.filters.sort,
 });

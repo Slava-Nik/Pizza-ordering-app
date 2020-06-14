@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  Link,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartIcon from "@assets/images/cart-icon";
 import { totalCartPriceSelector, totalCartProductsSelector } from "../../../store/selectors/cart";
 

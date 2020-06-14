@@ -9,7 +9,6 @@ import { totalCartProductsByIdSelector } from "../../../store/selectors/cart";
 import config from "../../../config";
 import "../style.scss";
 
-
 const doughTypes = [
   { id: 1, name: "Thin" },
   { id: 2, name: "Tradition" },
@@ -32,9 +31,9 @@ function ProductsList(props) {
     totalCartProductsById,
   } = props;
 
-  const [isProductDescriptionVisible, setProductDescriptionVisibility] = useState(false);
   const [doughType, setDoughType] = useState(doughTypes[0].name);
   const [pizzaSize, setPizzaSize] = useState(pizzaSizes[0].name);
+  const [isProductDescriptionVisible, setProductDescriptionVisibility] = useState(false);
 
   const productPrice = useMemo(
     () => Math.round(product.basePrice * priceCalculation[pizzaSize]),
@@ -115,6 +114,7 @@ function ProductsList(props) {
         animationType="opacity"
         animationTimeout={300}
         className="pizza-block__description-modal"
+        hideOnEscape={() => { setProductDescriptionVisibility(false); }}
       >
         <ProductDescriptionModal
           hideModal={() => { setProductDescriptionVisibility(false); }}

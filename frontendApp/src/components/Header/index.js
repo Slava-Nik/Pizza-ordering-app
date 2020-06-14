@@ -1,8 +1,6 @@
 import React from "react";
 import PizzaLogo from "@assets/images/pizza-logo";
-import {
-  Link,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartButton from "./CartButton";
 import "./style.scss";
 

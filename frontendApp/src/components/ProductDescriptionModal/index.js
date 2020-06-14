@@ -9,7 +9,6 @@ function ProductDescription(props) {
 
   return (
     <div className="product-description">
-
       <div className="product-description__inner">
         <div className="product-description__image-wrapper">
           <img
@@ -20,7 +19,10 @@ function ProductDescription(props) {
         </div>
         <div className="product-description__content-wrapper">
           <h2 className="product-description__title">{product.title}</h2>
-          <p className="product-description__content">{product.description}</p>
+          <p className="product-description__content">
+            {product.description}
+            .
+          </p>
         </div>
       </div>
       <button
