@@ -7,7 +7,9 @@ import {
 import ProductAPI from "../../api/product";
 
 // eslint-disable-next-line import/prefer-default-export
-export const getProducts = () => async (dispatch) => {
+export const getProducts = () => async (dispatch, getState) => {
+  const { data } = getState().products;
+  if (data && data.length) return;
   dispatch({
     type: requestActionType(GET_PRODUCTS),
   });
