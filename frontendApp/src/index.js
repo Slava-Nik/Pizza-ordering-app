@@ -17,8 +17,8 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <div className="main-wrapper">
+            <Header />
             <Suspense fallback={null}>
-              <Header />
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/cart" component={Cart} />
