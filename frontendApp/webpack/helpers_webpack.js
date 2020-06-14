@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const autoprefixer = require("autoprefixer");
+const ImageminPlugin = require('imagemin-webpack-plugin').default
 const imageminPngquant = require("imagemin-pngquant");
 const imageminMozjpeg = require("imagemin-mozjpeg");
 const imageminGifsicle = require("imagemin-gifsicle");
@@ -23,7 +24,37 @@ const getPlugins = () => {
           from: path.join(PATHS.static, "favicon.ico"),
           to: PATHS.dist,
         },
+        {
+          from: path.join(PATHS.static, "images"),
+          to: path.join(PATHS.dist, "images"),
+        }
       ],
+    }),
+    new ImageminPlugin({
+          disable: isDev,
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          optipng: {
+              optimizationLevel: 7,
+          },
+          pngquant: {
+              quality: [0.7, 0.9],
+              speed: 4,
+          },
+          gifsicle: {
+              optimizationLevel: 3,
+          },
+          svgo: {
+              plugins: [{ removeTitle: true }, { convertPathData: false }],
+          },
+          jpegtran: {
+              progressive: true,
+          },
+          plugins: [
+              imageminMozjpeg({
+                  quality: 90,
+                  progressive: true,
+              }),
+          ],
     }),
     new HtmlWebpackPlugin({
       filename: "index.html",
@@ -33,6 +64,7 @@ const getPlugins = () => {
       filename: getFilename("css"),
     }),
   ];
+
   return plugins;
 };
 
