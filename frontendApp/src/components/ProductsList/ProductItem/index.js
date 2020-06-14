@@ -56,7 +56,7 @@ function ProductsList(props) {
       <div className="pizza-block__content">
         <img
           className="pizza-block__image pizza-block__image--home"
-          src={`${config.backend}${product.imageSrc}`}
+          src={`${product.imageSrc}`}
           alt={product.title}
           onClick={() => { setProductDescriptionVisibility(true); }}
         />
