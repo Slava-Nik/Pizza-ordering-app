@@ -27,7 +27,7 @@ function ProductDescription(props) {
       </div>
       <button
         type="button"
-        className="order-form__close"
+        className="product-description__close"
         onClick={() => { hideModal(); }}
       >
         <CloseCrossIcon />

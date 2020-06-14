@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function LoaderIcon() {
+function LoaderIcon(props) {
+  const { className } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,6 +13,7 @@ function LoaderIcon() {
       display="block"
       preserveAspectRatio="xMidYMid"
       viewBox="0 0 100 100"
+      className={className}
     >
       <defs>
         <linearGradient
@@ -88,5 +91,14 @@ function LoaderIcon() {
     </svg>
   );
 }
+
+LoaderIcon.propTypes = {
+  className: PropTypes.string,
+};
+
+LoaderIcon.defaultProps = {
+  className: "",
+};
+
 
 export default LoaderIcon;

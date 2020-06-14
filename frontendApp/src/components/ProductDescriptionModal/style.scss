@@ -15,6 +15,25 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 60px;
   z-index: 1000;
 
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: -29px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    svg{
+      width: 19px;
+      transition: transform 0.1s ease-in-out 0s;
+    }
+    &:hover{
+      svg{
+        transform: scale(1.11);
+      }
+    }
+  }
+
   &__inner{
     display: flex;
     align-items: center;
@@ -117,6 +136,14 @@
   .product-description{
     min-height: 400px;
 
+    &__close {
+      top: 15px;
+      right: 15px;
+      svg{
+        fill: #545454;
+      }
+    }
+
     &__image{
       width: 190px;
     }
@@ -133,6 +160,14 @@
     left: 0;
     transform: translate(0, 0);
     border-radius: 0;
+
+    &__close {
+      top: 15px;
+      right: 15px;
+      svg{
+        fill: #545454;
+      }
+    }
 
     &__image-wrapper{
       display: flex;

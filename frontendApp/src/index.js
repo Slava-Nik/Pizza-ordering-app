@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "@components/Header";
 import { PersistGate } from "redux-persist/integration/react";
+import LoaderImage from "@assets/images/loader-icon";
 import configureStore from "./store/configureStore";
 import "./common/styles/app.scss";
 
@@ -18,7 +19,7 @@ function App() {
         <Router>
           <div className="main-wrapper">
             <Header />
-            <Suspense fallback={null}>
+            <Suspense fallback={<LoaderImage className="router-loader" />}>
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/cart" component={Cart} />
