@@ -11,9 +11,9 @@ const config = {
     },
   },
   production: {
-    backend: "",
+    backend: "http://localhost:5000",
     axios: {
-      baseURL: "",
+      baseURL: "http://localhost:5000/api/v1",
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",

@@ -4,7 +4,7 @@
   "description": "Backend for pizza app",
   "main": "index.js",
   "private": true,
-"scripts": {
+  "scripts": {
     "start": "pm2 start index.js --name pizza",
     "stop": "pm2 stop pizza",
     "dev": "nodemon index.js",

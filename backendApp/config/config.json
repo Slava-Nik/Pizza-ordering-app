@@ -28,7 +28,7 @@
       }
     },
     "corsOptions": {
-      "origin": ["http://localhost:3000"],
+      "origin": ["http://localhost:80"],
       "credentials": true,
       "optionsSuccessStatus": 200
     }
